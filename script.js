@@ -26,7 +26,7 @@ let currentTime = 0;
 let intervalId;
 let batteryLevel = 100;
 let flashlightOn = false;
-let batteryDrainSpeed = 6000;
+let batteryDrainSpeed = 6000;  // Normalne tempo rozładowania
 let batteryInterval;
 
 function updateClock() {
@@ -53,8 +53,8 @@ function resetBattery() {
     batteryTextElement.textContent = "100%";
     flashlightButton.disabled = false;
     flashlightOn = false;
-    flashlightButton.textContent = "Latarka";
-    batteryDrainSpeed = 6000;
+    flashlightButton.textContent = "Włącz latarkę";
+    batteryDrainSpeed = 6000;  // Normalne tempo rozładowania
 }
 
 function updateBattery() {
@@ -65,7 +65,6 @@ function updateBattery() {
 
         if (batteryLevel === 0) {
             flashlightButton.disabled = true;
-            flashlightOn = false;
         }
     }
 }
@@ -77,14 +76,15 @@ function startBatteryDrain() {
 
 flashlightButton.addEventListener("click", () => {
     if (batteryLevel > 0) {
+        // Przełączamy stan latarki
         flashlightOn = !flashlightOn;
 
         if (flashlightOn) {
             flashlightButton.textContent = "Wyłącz latarkę";
-            batteryDrainSpeed = 3000;
+            batteryDrainSpeed = 3000;  // Szybsze rozładowanie przy włączonej latarce
         } else {
-            flashlightButton.textContent = "Latarka";
-            batteryDrainSpeed = 6000;
+            flashlightButton.textContent = "Włącz latarkę";
+            batteryDrainSpeed = 6000;  // Normalne rozładowanie przy wyłączonej latarce
         }
         startBatteryDrain();
     } else {
@@ -98,7 +98,7 @@ startButton.addEventListener("click", () => {
     timeDisplay.textContent = "00:00";
     intervalId = setInterval(updateClock, 1000);
     resetBattery();
-    startBatteryDrain();  // Teraz bateria zacznie schodzić dopiero po naciśnięciu Start
+    startBatteryDrain();  // Rozpoczęcie drainu baterii po naciśnięciu Start
 });
 
 attackButton.addEventListener("click", () => {
@@ -107,6 +107,6 @@ attackButton.addEventListener("click", () => {
     currentTime = 0;
     timeDisplay.textContent = "00:00";
     resetBattery();
-    startBatteryDrain();
+    startBatteryDrain();  // Reset baterii po ataku
 });
 
