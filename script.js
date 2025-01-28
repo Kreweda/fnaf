@@ -1,6 +1,6 @@
 // Definicja tytułów nocy
 const nightTitles = [
-    "Noc 1 - Zjawa Koteu",
+    "Noc 1 - Zjawa Koteua atakuje",
     "Noc 2 - Śmiech na (nie) pustej sali",
     "Noc 3 - Nie oglądaj się za siebie",
     "Noc 4 - Bez ryzyka nie ma Koteua",
